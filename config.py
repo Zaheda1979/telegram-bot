@@ -3,7 +3,6 @@ import os
 # --- Secrets: set these as Environment Variables on Railway, never hardcode ---
 TELEGRAM_BOT_TOKEN = os.environ["TELEGRAM_BOT_TOKEN"]
 TELEGRAM_CHAT_ID = os.environ["TELEGRAM_CHAT_ID"]
-ANTHROPIC_API_KEY = os.environ["ANTHROPIC_API_KEY"]
 
 # --- Edit this list anytime to change which stocks get covered ---
 STOCKS = ["SBIN", "ITC", "INDIGO", "CIPLA"]
