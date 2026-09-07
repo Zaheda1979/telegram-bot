@@ -32,10 +32,14 @@ def generate_news_report() -> str:
 
 
 def run():
+    from ath_alert import check_ath_alerts
     from telegram_utils import send_message
     report = generate_news_report()
     send_message(report)
 
+    ath_alerts = check_ath_alerts(STOCKS)
+    for alert in ath_alerts:
+        send_message(alert)
 
 if __name__ == "__main__":
     run()
