@@ -8,6 +8,6 @@ TELEGRAM_CHAT_ID = os.environ["TELEGRAM_CHAT_ID"]
 STOCKS = ["ABSLAMC", "INOXINDIA", "RRKABEL", "ABCAPITAL", "RKFORGE"]
 
 # --- Schedule times (24hr, Asia/Kolkata timezone) ---
-MOTIVATION_TIME = {"hour": 9, "minute": 0}
-NEWS_TIME = {"hour": 11, "minute": 0}
+MOTIVATION_TIME = {"hour": 7, "minute": 0}
+NEWS_TIME = {"hour": 10, "minute": 0}
 TIMEZONE = "Asia/Kolkata"
