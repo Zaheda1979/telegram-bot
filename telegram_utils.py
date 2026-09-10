@@ -9,7 +9,8 @@ def _send_one(text: str):
     payload = {
         "chat_id": TELEGRAM_CHAT_ID,
         "text": text,
-        "disable_web_page_preview": False,
+        "parse_mode": "HTML",
+        "disable_web_page_preview": True,
     }
     resp = requests.post(url, data=payload, timeout=20)
     resp.raise_for_status()
