@@ -1,4 +1,5 @@
 import feedparser
+from html import escape
 from config import STOCKS
 
 
@@ -14,11 +15,13 @@ def fetch_headlines(stock: str, limit: int = 3):
 
 def format_stock(stock: str, headlines: list) -> str:
     if not headlines:
-        return f"{stock}\nNo significant fresh news."
+        return f"<b>{escape(stock)}</b>\nNo significant fresh news."
 
-    lines = [stock]
+    lines = [f"<b>{escape(stock)}</b>"]
     for h in headlines:
-        lines.append(f"- {h['title']}\n  {h['link']}")
+        title = escape(h["title"])
+        link = escape(h["link"], quote=True)
+        lines.append(f'• {title} — <a href="{link}">Read more</a>')
     return "\n".join(lines)
 
 
@@ -27,10 +30,10 @@ def generate_news_report() -> str:
     for stock in STOCKS:
         try:
             headlines = fetch_headlines(stock)
-        except Exception as e:
+        except Exception:
             headlines = []
         sections.append(format_stock(stock, headlines))
-    note = "\n\n(Ye sirf headlines hain, koi buy/sell advice nahi. Poori khabar link pe padho.)"
+    note = "\n\n(Ye sirf headlines hain, koi buy/sell advice nahi.)"
     return "\n\n".join(sections) + note
 
 
